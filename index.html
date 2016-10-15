@@ -146,7 +146,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <a href="/buteyi.github.io/tags/iOS/" style="font-size: 10px;">iOS</a>
                     </div>
                 </section>
                 
@@ -223,6 +223,87 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-界面之间的传值" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/buteyi.github.io/2016/10/15/界面之间的传值/" class="article-date">
+      <time datetime="2016-10-15T15:05:14.000Z" itemprop="datePublished">2016-10-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/buteyi.github.io/2016/10/15/界面之间的传值/">界面之间的传值</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="界面之间的传值"><a href="#界面之间的传值" class="headerlink" title="界面之间的传值"></a>界面之间的传值</h1><hr>
+<h3 id="正向传值"><a href="#正向传值" class="headerlink" title="正向传值"></a>正向传值</h3><p>在第一个界面的按钮的<strong>Target</strong>对应的方法中:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">click</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">let</span> sed = <span class="type">SecondViewController</span>()</div><div class="line">	<span class="comment">//向新界面传值</span></div><div class="line">	sed.titleText = <span class="string">"设置新的界面二标题"</span></div><div class="line">	<span class="keyword">self</span>.navigationController?.pushViewController(sed, animated: <span class="literal">true</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>SubViewController的代码如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecondViewController</span>:....</span>&#123;</div><div class="line">	<span class="keyword">var</span> titleText: <span class="type">String</span>?</div><div class="line">	</div><div class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">super</span>.viewDidLoad()</div><div class="line">	<span class="keyword">self</span>.title = titleText! <span class="comment">//使用传过来的值</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="反向传值"><a href="#反向传值" class="headerlink" title="反向传值"></a>反向传值</h3><p>常用的方法有:</p>
+<ol>
+<li>协议代理</li>
+<li>闭包</li>
+</ol>
+<ul>
+<li>协议代理</li>
+</ul>
+<p>在FirstViewController.swift代码如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FirstViewController</span>: <span class="title">SecondDelegate</span> ...</span>&#123;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">		<span class="comment">//创建一个按钮用来触发跳转到SecondView事件,Target方法:click</span></div><div class="line">		<span class="comment">//创建一个UILabel用来显示传递过来的值</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">click</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">let</span> secondVc = <span class="type">SecondViewController</span>()</div><div class="line">		<span class="comment">//将当前的视图控制器设置成下一个视图控制器的代理</span></div><div class="line">		secondVc.delegate = <span class="keyword">self</span></div><div class="line">		<span class="keyword">self</span>.navigationController?.pushViewController(secondVc, animated: <span class="literal">true</span>)</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//实现代理方法</span></div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">changeValue</span><span class="params">(title String)</span></span>&#123;</div><div class="line">		...</div><div class="line">		</div><div class="line">		<span class="keyword">let</span> newTitle = title</div><div class="line">		<span class="keyword">self</span>.label.title = newTitle</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在SecondViewController.swift代码如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在委托类中定义协议</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SecondDelegate</span> </span>&#123;</div><div class="line">	<span class="comment">//定义需要的方法</span></div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">changeTitle</span><span class="params">(title: String)</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecondViewController</span>: ...</span>&#123;</div><div class="line">	<span class="comment">//定义一个遵守SecondDelegate的代理属性</span></div><div class="line">	<span class="keyword">var</span> delegate: <span class="type">SecondDelegate</span>?</div><div class="line">	</div><div class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">		<span class="comment">//创建一个按钮用来触发事件,Target方法:click</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">cllick</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">		<span class="comment">//调用代理执行相应的方法</span></div><div class="line">		<span class="keyword">let</span> title = <span class="string">"new value"</span></div><div class="line">		delegate?.changeTitle(title)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>闭包</li>
+</ul>
+<p>在FirstViewController.swift代码如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FirstViewController</span>: ...</span>&#123;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">		<span class="comment">//创建一个按钮用来触发跳转到SecondView事件,Target方法:click</span></div><div class="line">		<span class="comment">//创建一个UILabel用来显示传递过来的值</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">click</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">let</span> secondVc = <span class="type">SecondViewController</span>()</div><div class="line">		<span class="comment">//设置值的接受方式</span></div><div class="line">		secondVc.changeTitle = &#123;(title: <span class="type">String</span>) <span class="keyword">in</span> </div><div class="line">			<span class="keyword">self</span>.label.title = title</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">self</span>.navigationController?.pushViewController(secondVc, animated: <span class="literal">true</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在SecondViewController.swift代码如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecondViewController</span>: ...</span>&#123;</div><div class="line">	<span class="comment">//定义一个闭包,有一个参数</span></div><div class="line">	<span class="keyword">var</span> changeTitle:((title: <span class="type">String</span>) -&gt; <span class="type">Void</span>)?</div><div class="line">	</div><div class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">		<span class="comment">//创建一个按钮用来触发事件,Target方法:click</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">cllick</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">		<span class="comment">//使用闭包传值</span></div><div class="line">		<span class="keyword">let</span> title = <span class="string">"new value"</span></div><div class="line">		changeTitle?(title: title)</div><div class="line">		<span class="keyword">self</span>.navigationContoller?.popViewControllerAnimated(<span class="literal">true</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/buteyi.github.io/tags/iOS/">iOS</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
