@@ -6,21 +6,18 @@
   <title>界面之间的传值 | BUTEYI&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="界面之间的传值
-正向传值在第一个界面的按钮的Target对应的方法中:
-123456func click()&amp;#123;	let sed = SecondViewController()	//向新界面传值	sed.titleText = &quot;设置新的界面二标题&quot;	self.navigationController?.pushViewController(sed, animated: true)&amp;#1">
+正向传值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="界面之间的传值">
 <meta property="og:url" content="http://buteyi.github.io/2016/10/15/界面之间的传值/index.html">
 <meta property="og:site_name" content="BUTEYI's Blog">
 <meta property="og:description" content="界面之间的传值
-正向传值在第一个界面的按钮的Target对应的方法中:
-123456func click()&amp;#123;	let sed = SecondViewController()	//向新界面传值	sed.titleText = &quot;设置新的界面二标题&quot;	self.navigationController?.pushViewController(sed, animated: true)&amp;#1">
-<meta property="og:updated_time" content="2016-10-15T15:06:06.000Z">
+正向传值">
+<meta property="og:updated_time" content="2016-10-15T15:07:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="界面之间的传值">
 <meta name="twitter:description" content="界面之间的传值
-正向传值在第一个界面的按钮的Target对应的方法中:
-123456func click()&amp;#123;	let sed = SecondViewController()	//向新界面传值	sed.titleText = &quot;设置新的界面二标题&quot;	self.navigationController?.pushViewController(sed, animated: true)&amp;#1">
+正向传值">
   
     <link rel="alternative" href="/atom.xml" title="BUTEYI&#39;s Blog" type="application/atom+xml">
   
@@ -265,7 +262,8 @@
       
           
         <h1 id="界面之间的传值"><a href="#界面之间的传值" class="headerlink" title="界面之间的传值"></a>界面之间的传值</h1><hr>
-<h3 id="正向传值"><a href="#正向传值" class="headerlink" title="正向传值"></a>正向传值</h3><p>在第一个界面的按钮的<strong>Target</strong>对应的方法中:</p>
+<h3 id="正向传值"><a href="#正向传值" class="headerlink" title="正向传值"></a>正向传值</h3><a id="more"></a>
+<p>在第一个界面的按钮的<strong>Target</strong>对应的方法中:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">click</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">let</span> sed = <span class="type">SecondViewController</span>()</div><div class="line">	<span class="comment">//向新界面传值</span></div><div class="line">	sed.titleText = <span class="string">"设置新的界面二标题"</span></div><div class="line">	<span class="keyword">self</span>.navigationController?.pushViewController(sed, animated: <span class="literal">true</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>SubViewController的代码如下:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecondViewController</span>:....</span>&#123;</div><div class="line">	<span class="keyword">var</span> titleText: <span class="type">String</span>?</div><div class="line">	</div><div class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">super</span>.viewDidLoad()</div><div class="line">	<span class="keyword">self</span>.title = titleText! <span class="comment">//使用传过来的值</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -299,7 +297,7 @@
         <p><span>本文标题:</span><a href="/buteyi.github.io/2016/10/15/界面之间的传值/">界面之间的传值</a></p>
         <p><span>文章作者:</span><a href="/buteyi.github.io/" title="访问 John zhang 的个人博客">John zhang</a></p>
         <p><span>发布时间:</span>2016年10月15日 - 23时05分</p>
-        <p><span>最后更新:</span>2016年10月15日 - 23时06分</p>
+        <p><span>最后更新:</span>2016年10月15日 - 23时07分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/buteyi.github.io/2016/10/15/界面之间的传值/" title="界面之间的传值">http://buteyi.github.io/buteyi.github.io/2016/10/15/界面之间的传值/</a>
             <span class="copy-path" data-clipboard-text="原文: http://buteyi.github.io/buteyi.github.io/2016/10/15/界面之间的传值/　　作者: John zhang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
