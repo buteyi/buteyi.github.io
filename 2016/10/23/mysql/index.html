@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>BUTEYI&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="To start mysqld at boot time you have to copysupport-files/mysql.server to the right place for your system
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !To do so, start the server, then i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUTEYI's Blog">
+<meta property="og:url" content="http://buteyi.github.com/2016/10/23/mysql/index.html">
+<meta property="og:site_name" content="BUTEYI's Blog">
+<meta property="og:description" content="To start mysqld at boot time you have to copysupport-files/mysql.server to the right place for your system
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !To do so, start the server, then i">
+<meta property="og:updated_time" content="2016-10-23T08:54:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BUTEYI's Blog">
+<meta name="twitter:description" content="To start mysqld at boot time you have to copysupport-files/mysql.server to the right place for your system
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !To do so, start the server, then i">
+  
+    <link rel="alternate" href="/atom.xml" title="BUTEYI&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">BUTEYI&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">更好的我,遇上更好的你</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://buteyi.github.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/23/mysql/" class="article-date">
+  <time datetime="2016-10-23T08:54:48.000Z" itemprop="datePublished">2016-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>To start mysqld at boot time you have to copy<br>support-files/mysql.server to the right place for your system</p>
+<p>PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !<br>To do so, start the server, then issue the following commands:</p>
+<p>/usr/bin/mysqladmin -u root password ‘new-password’<br>/usr/bin/mysqladmin -u root -h VM_202_193_centos password ‘new-password’</p>
+<p>Alternatively you can run:<br>/usr/bin/mysql_secure_installation</p>
+<p>which will also give you the option of removing the test<br>databases and anonymous user created by default.  This is<br>strongly recommended for production servers.</p>
+<p>See the manual for more instructions.</p>
+<p>You can start the MySQL daemon with:<br>cd /usr ; /usr/bin/mysqld_safe &amp;</p>
+<p>You can test the MySQL daemon with mysql-test-run.pl<br>cd /usr/mysql-test ; perl mysql-test-run.pl</p>
+<p>Please report any problems with the /usr/bin/mysqlbug script!</p>
+<p>grant all privileges on <em>.</em> to ‘root’@’%’ identified by ‘password’ with grant option;<br>%为任意IP<br>flush privileges; </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://buteyi.github.com/2016/10/23/mysql/" data-id="ciw25xb4h000aj3s61fyiyfg8" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/11/UI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/15/界面之间的传值/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">界面之间的传值</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/iOS/" style="font-size: 10px;">iOS</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/28/second/">second</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/28/first/">first</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/28/my-test/">my_test</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/28/Markdown 语法和 MWeb 写作使用说明/">MarkDown 语法和MWeb 写作使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/28/我的测试/">我的测试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John zhang<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
